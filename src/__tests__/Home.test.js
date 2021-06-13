@@ -30,21 +30,24 @@ describe('HOME shallow description',()=>{
     it('Renders', () => {
        expect(wrapper.length).toEqual(1)
     });
-
+    //Permet de trouver si le header contiens un h2
     it('Contains header - h2', () => {
-        //Créer le expect
+        expect(wrapper.find('h2').length).toEqual(1);
     });
+    // Permet de savoir si le h2 contiens un texte precis
     it('H2 header value ', () => {
-        //Créer le expect
+        expect(wrapper.text().includes('Using React and Redux')).toBe(true);
     });
+    // Permet de savoir si un input est present avec la ref 'input1'
     it('Contains input1', () => {
-        //Créer le expect
+        expect(wrapper.find('input').at(0).getElement()['ref'].toString()).toEqual('input1');
     });
+    // Permet de savoir si un input est present avec la ref 'input2'
     it('Contains input2', () => {
-        //Créer le expect
+        expect(wrapper.find('input').at(1).getElement()['ref'].toString()).toEqual('input2');
     });
      it('Contains output', () => {
-         //Créer le expect
+         // expect(wrapper.find('output').at(0).getElement()['ref'].toString()).toEqual('output');
     });
     it('Contains button with id="add"', () => {
         //Créer le expect
@@ -119,21 +122,24 @@ describe('HOME mounted',()=>{
         expect(output.prop('value')).toEqual(40);
     });
 
-
     it('Calculate when Inputs are Filled and ADD is Clicked', () => {
         let substractButton = wrapper.find('button').at(0);
     });
 
-    it('fetch when asked', () => {
+    it('fetch when asked', async() => {
 
         let fetchButton = wrapper.find('button').at(2);
 
         fetchButton.simulate('click');
 
-        setTimeout(/*TODO*/);
+        // setTimeout(() => {
+        //     checkValue()
+        // },1000);
+
+        setTimeout(checkValue,1000);
 
         function checkValue(){
-		/*TODO*/
+		    expect(wrapper.update().find('input').at(0).prop('value')).toEqual(145);
         }
 
 

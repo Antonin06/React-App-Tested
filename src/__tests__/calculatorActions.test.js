@@ -4,7 +4,8 @@ describe('ACTIONS - Test calculatorActions',()=>{
 
     it('actionCreator addInputs', () => {
         const add = addInputs(50);
-        //Créer le expect
+        expect(add.type).toEqual("ADD_INPUTS");
+        expect(add.output).toEqual(50);
     });
 
 

@@ -8,7 +8,7 @@ describe('Calculator Reducers',() => {
         };
         let action = {type:"ADD_INPUTS", output: 500};
         state = calculatorReducers(state, action);
-        //Créer le expect
+        expect (state.output).toEqual(500);
     });
 
     it('delete correctly', () => {
